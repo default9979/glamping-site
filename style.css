@@ -384,3 +384,71 @@
     padding: 16px;
     font-size: 14px;
   }
+
+  .burger {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .burger {
+      display: block;
+    }
+  
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background-color: rgba(40, 35, 25, 0.95);
+      padding: 20px;
+      gap: 16px;
+    }
+
+    .slider {
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+  
+    .slides {
+      order: 1;
+      flex-basis: 100%;
+    }
+  
+    .slider-btn {
+      order: 2;
+    }
+
+    .hero-content h1 {
+      font-size: 36px;
+    }
+  
+    .hero-content p {
+      font-size: 17px;
+    }
+  
+    .nav-links.open {
+      display: flex;
+    }
+  
+    .weather-cards {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      justify-content: flex-start;
+      padding-bottom: 12px;
+    }
+  
+    .weather-card {
+      flex: 0 0 auto;
+    }
+    
+    nav {
+      position: fixed;
+    }
+  }

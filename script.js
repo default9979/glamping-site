@@ -159,3 +159,17 @@ fetch("https://glamping-server-production.up.railway.app/weather")
       formStatus.textContent = "Ошибка отправки. Попробуйте позже.";
     });
 });
+
+const burgerBtn = document.getElementById("burgerBtn");
+const navLinks = document.getElementById("navLinks");
+
+burgerBtn.addEventListener("click", function () {
+  navLinks.classList.toggle("open");
+});
+
+const navLinkItems = navLinks.querySelectorAll("a");
+navLinkItems.forEach(function (link) {
+  link.addEventListener("click", function () {
+    navLinks.classList.remove("open");
+  });
+});
