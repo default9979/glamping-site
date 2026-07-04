@@ -157,9 +157,13 @@ fetch("https://glamping-server-production.up.railway.app/weather")
     .then(function (response) {
       return response.json();
     })
-    .then(function () {
-      formStatus.textContent = "Заявка отправлена! Свяжемся с вами.";
-      bookingForm.reset();
+    .then(function (data) {
+      if (data.ok) {
+        formStatus.textContent = "Заявка отправлена! Свяжемся с вами.";
+        bookingForm.reset();
+      } else {
+        formStatus.textContent = "Ошибка отправки. Попробуйте позже.";
+      }
     })
     .catch(function () {
       formStatus.textContent = "Ошибка отправки. Попробуйте позже.";
