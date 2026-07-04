@@ -1,5 +1,11 @@
 const API_URL = "https://glamping-server-production.up.railway.app";
 
+const houses = [
+  { name: "Сосна", price: 6000 },
+  { name: "Кедр", price: 8500 },
+  { name: "Поляна", price: 4500 }
+];
+
 const slides = document.querySelectorAll(".slide");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
@@ -74,6 +80,14 @@ fetch(API_URL + "/weather")
   });
 
   const houseSelect = document.getElementById("houseSelect");
+
+  houses.forEach(function (house) {
+    const option = document.createElement("option");
+    option.value = house.price;
+    option.textContent = house.name + " — " + house.price + " ₽/ночь";
+    houseSelect.appendChild(option);
+  });
+
   const nightsInput = document.getElementById("nightsInput");
   const calcBtn = document.getElementById("calcBtn");
   const calcResult = document.getElementById("calcResult");
