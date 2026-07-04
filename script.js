@@ -92,6 +92,9 @@ fetch("https://glamping-server-production.up.railway.app/weather")
 
  const bookingForm = document.getElementById("bookingForm");
  const formStatus = document.getElementById("formStatus");
+ const today = new Date().toISOString().split("T")[0];
+ document.getElementById("dateFrom").min = today;
+ document.getElementById("dateTo").min = today;
 
   bookingForm.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -124,12 +127,15 @@ fetch("https://glamping-server-production.up.railway.app/weather")
   dateError.textContent = "";
 
   if (dateFrom === "" || dateTo === "") {
-   dateError.textContent = "Выберите даты заезда и выезда";
-   valid = false;
-  } else if (dateTo <= dateFrom) {
-    dateError.textContent = "Дата выезда должна быть позже заезда";
+    dateError.textContent = "Выберите даты заезда и выезда";
     valid = false;
-  }
+   } else if (dateFrom < today) {
+     dateError.textContent = "Дата заезда не может быть в прошлом";
+     valid = false;
+   } else if (dateTo <= dateFrom) {
+     dateError.textContent = "Дата выезда должна быть позже заезда";
+     valid = false;
+   }
 
   if (!valid) {
     return;
