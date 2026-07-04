@@ -1,3 +1,5 @@
+const API_URL = "https://glamping-server-production.up.railway.app";
+
 const slides = document.querySelectorAll(".slide");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
@@ -39,7 +41,7 @@ const weatherIcons = {
 
 const dayNames = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
 
-fetch("https://glamping-server-production.up.railway.app/weather")
+fetch(API_URL + "/weather")
   .then(function (response) {
     return response.json();
   })
@@ -143,7 +145,7 @@ fetch("https://glamping-server-production.up.railway.app/weather")
 
   formStatus.textContent = "Отправляем...";
 
-  fetch("https://glamping-server-production.up.railway.app/booking", {
+  fetch(API_URL + "/booking", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
