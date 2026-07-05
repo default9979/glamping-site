@@ -1,10 +1,41 @@
 const API_URL = "https://glamping-server-production.up.railway.app";
 
 const houses = [
-  { name: "Сосна", price: 6000 },
-  { name: "Кедр", price: 8500 },
-  { name: "Поляна", price: 4500 }
+  {
+    name: "A-frame «Сосна»",
+    price: 6000,
+    img: "images/house-1.png",
+    desc: "Уютный домик для двоих с панорамным окном и камином."
+  },
+  {
+    name: "A-frame «Кедр»",
+    price: 8500,
+    img: "images/house-2.png",
+    desc: "Просторный домик для семьи, терраса с видом на лес."
+  },
+  {
+    name: "Шатёр «Поляна»",
+    price: 4500,
+    img: "images/house-3.png",
+    desc: "Глэмпинг-шатёр с мягкой кроватью и видом на звёзды."
+  }
 ];
+
+const slidesContainer = document.getElementById("slidesContainer");
+
+houses.forEach(function (house, index) {
+  const slide = document.createElement("div");
+  slide.className = "slide";
+  if (index === 0) {
+    slide.classList.add("active");
+  }
+  slide.innerHTML =
+    '<img src="' + house.img + '" alt="' + house.name + '">' +
+    '<h3>' + house.name + '</h3>' +
+    '<p>' + house.desc + '</p>' +
+    '<p class="slide-price">от ' + house.price + ' ₽ / ночь</p>';
+  slidesContainer.appendChild(slide);
+});
 
 const slides = document.querySelectorAll(".slide");
 const prevBtn = document.getElementById("prevBtn");
@@ -108,6 +139,14 @@ fetch(API_URL + "/weather")
 
  const bookingForm = document.getElementById("bookingForm");
  const formStatus = document.getElementById("formStatus");
+
+ houses.forEach(function (house) {
+   const option = document.createElement("option");
+   option.value = house.name;
+   option.textContent = house.name;
+   document.getElementById("houseBooking").appendChild(option);
+ });
+
  const today = new Date().toISOString().split("T")[0];
  document.getElementById("dateFrom").min = today;
  document.getElementById("dateTo").min = today;

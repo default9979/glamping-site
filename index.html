@@ -38,27 +38,8 @@
     <div class="slider">
       <button class="slider-btn" id="prevBtn">‹</button>
   
-      <div class="slides">
-        <div class="slide active">
-          <img src="images/house-1.png" alt="A-frame Сосна">
-          <h3>A-frame «Сосна»</h3>
-          <p>Уютный домик для двоих с панорамным окном и камином.</p>
-          <p class="slide-price">от 6000 ₽ / ночь</p>
-        </div>
-        <div class="slide">
-          <img src="images/house-2.png" alt="Кёдр">
-          <h3>A-frame «Кедр»</h3>
-          <p>Просторный домик для семьи, терраса с видом на лес.</p>
-          <p class="slide-price">от 8500 ₽ / ночь</p>
-        </div>
-        <div class="slide">
-          <img src="images/house-3.png" alt="Шатёр Поляна">
-          <h3>Шатёр «Поляна»</h3>
-          <p>Глэмпинг-шатёр с мягкой кроватью и видом на звёзды.</p>
-          <p class="slide-price">от 4500 ₽ / ночь</p>
-        </div>
-      </div>
-  
+      <div class="slides" id="slidesContainer"></div>
+      
       <button class="slider-btn" id="nextBtn">›</button>
     </div>
   </section>
@@ -98,11 +79,7 @@
       <input type="tel" id="phone" placeholder="Телефон">
       <span class="error" id="phoneError"></span>
   
-      <select id="houseBooking">
-        <option value="A-frame «Сосна»">A-frame «Сосна»</option>
-        <option value="A-frame «Кедр»">A-frame «Кедр»</option>
-        <option value="Шатёр «Поляна»">Шатёр «Поляна»</option>
-      </select>
+      <select id="houseBooking"></select>
   
       <label>Дата заезда:</label>
       <input type="date" id="dateFrom">
