@@ -21,6 +21,12 @@ const houses = [
   }
 ];
 
+const extras = [
+  { id: "breakfast", name: "Завтрак", price: 500, perNight: true },
+  { id: "sauna", name: "Баня", price: 2000, perNight: false },
+  { id: "transfer", name: "Трансфер", price: 1500, perNight: false }
+];
+
 const slidesContainer = document.getElementById("slidesContainer");
 
 houses.forEach(function (house, index) {
@@ -119,6 +125,16 @@ fetch(API_URL + "/weather")
     houseSelect.appendChild(option);
   });
 
+  const extrasBox = document.getElementById("extrasBox");
+  extras.forEach(function (extra) {
+    const label = document.createElement("label");
+    const suffix = extra.perNight ? " ₽/ночь" : " ₽ разово";
+    label.innerHTML =
+      '<input type="checkbox" value="' + extra.id + '"> ' +
+      extra.name + ' (+' + extra.price + suffix + ')';
+    extrasBox.appendChild(label);
+  });
+
   const nightsInput = document.getElementById("nightsInput");
   const calcBtn = document.getElementById("calcBtn");
   const calcResult = document.getElementById("calcResult");
@@ -132,7 +148,19 @@ fetch(API_URL + "/weather")
       return;
     }
   
-    const total = pricePerNight * nights;
+    let total = pricePerNight * nights;
+
+    const checkedBoxes = extrasBox.querySelectorAll("input:checked");
+    checkedBoxes.forEach(function (box) {
+      const extra = extras.find(function (e) {
+        return e.id === box.value;
+      });
+      if (extra.perNight) {
+        total = total + extra.price * nights;
+      } else {
+        total = total + extra.price;
+      }
+    });
   
     calcResult.textContent = "Итого: " + total + " ₽ за " + nights + " ноч.";
   });
