@@ -136,10 +136,9 @@ fetch(API_URL + "/weather")
   });
 
   const nightsInput = document.getElementById("nightsInput");
-  const calcBtn = document.getElementById("calcBtn");
   const calcResult = document.getElementById("calcResult");
   
-  calcBtn.addEventListener("click", function () {
+  function calculate() {
     const pricePerNight = Number(houseSelect.value);
     const nights = Number(nightsInput.value);
   
@@ -163,7 +162,13 @@ fetch(API_URL + "/weather")
     });
   
     calcResult.textContent = "Итого: " + total + " ₽ за " + nights + " ноч.";
-  });
+  }
+
+  houseSelect.addEventListener("change", calculate);
+  nightsInput.addEventListener("input", calculate);
+  extrasBox.addEventListener("change", calculate);
+
+  calculate();
 
  const bookingForm = document.getElementById("bookingForm");
  const formStatus = document.getElementById("formStatus");
@@ -224,7 +229,10 @@ fetch(API_URL + "/weather")
     return;
   }
 
-  formStatus.textContent = "Отправляем...";
+  const submitBtn = bookingForm.querySelector("button");
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Отправляем…";
+  formStatus.textContent = "";
 
   fetch(API_URL + "/booking", {
     method: "POST",
@@ -250,6 +258,10 @@ fetch(API_URL + "/weather")
     })
     .catch(function () {
       formStatus.textContent = "Ошибка отправки. Попробуйте позже.";
+    })
+    .finally(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Отправить заявку";
     });
 });
 
@@ -266,3 +278,4 @@ navLinkItems.forEach(function (link) {
     navLinks.classList.remove("open");
   });
 });
+

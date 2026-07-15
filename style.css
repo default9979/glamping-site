@@ -290,11 +290,14 @@
   }
   
   .calc-result {
-    margin-top: 16px;
-    font-size: 22px;
+    margin-top: 24px;
+    font-size: 24px;
     font-weight: bold;
-    color: var(--color-primary);
+    color: #fff;
     text-align: center;
+    background-color: var(--color-accent);
+    padding: 18px;
+    border-radius: 12px;
     min-height: 30px;
   }
 
@@ -473,4 +476,28 @@
     nav {
       position: fixed;
     }
+  }
+
+  .hero-content button,
+  .calc-box button,
+  .booking-form button,
+  .slider-btn {
+    transition: background-color 0.2s, transform 0.1s;
+  }
+
+  .hero-content button:hover,
+  .calc-box button:hover,
+  .booking-form button:hover {
+    background-color: #79894b;
+  }
+
+  .hero-content button:active,
+  .calc-box button:active,
+  .booking-form button:active,
+  .slider-btn:active {
+    transform: scale(0.97);
+  }
+
+  .slider-btn:hover {
+    background-color: #79894b;
   }
