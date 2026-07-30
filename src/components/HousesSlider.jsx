@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Info } from 'lucide-react'
 import { houses } from '../data/constants'
+import HouseModal from './HouseModal'
 
 export default function HousesSlider() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [modalHouse, setModalHouse] = useState(null)
   const shouldReduceMotion = useReducedMotion()
   const slide = houses[currentIndex]
 
@@ -30,27 +32,15 @@ export default function HousesSlider() {
           <h2 className="font-display text-4xl font-medium text-fog sm:text-5xl">Наши домики</h2>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="card-dark overflow-hidden"
-        >
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="card-dark overflow-hidden">
           <div className="relative h-[420px] overflow-hidden sm:h-[480px]">
             <AnimatePresence mode="wait" initial={false}>
-              <motion.img
-                key={slide.id}
-                src={slide.img}
-                alt={slide.name}
-                variants={imageVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
+              <motion.img key={slide.id} src={slide.img} alt={slide.name} variants={imageVariants}
+                initial="enter" animate="center" exit="exit"
                 transition={{ duration: shouldReduceMotion ? 0 : 0.45 }}
-                className="absolute h-full w-full object-cover brightness-90"
-              />
+                className="absolute h-full w-full object-cover brightness-90" />
             </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-t from-night via-void/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-night via-night/20 to-transparent" />
 
             <button type="button" onClick={() => paginate(-1)} className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-night/60 backdrop-blur-md transition hover:border-gold/30" aria-label="Предыдущий">
               <ChevronLeft className="h-5 w-5 text-fog" />
@@ -76,16 +66,24 @@ export default function HousesSlider() {
               </motion.div>
             </AnimatePresence>
 
-            <div className="mt-8 flex items-center gap-2">
-              {houses.map((h, index) => (
-                <button key={h.id} type="button" onClick={() => setCurrentIndex(index)}
-                  className={`h-1 rounded-full transition-all ${index === currentIndex ? 'w-8 bg-gold' : 'w-1.5 bg-line hover:bg-muted'}`}
-                  aria-label={h.name} />
-              ))}
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <button type="button" onClick={() => setModalHouse(slide)} className="btn-ghost !h-10 !px-5 !text-xs">
+                <Info className="h-4 w-4" />
+                Подробнее
+              </button>
+              <div className="flex items-center gap-2">
+                {houses.map((h, index) => (
+                  <button key={h.id} type="button" onClick={() => setCurrentIndex(index)}
+                    className={`h-1 rounded-full transition-all ${index === currentIndex ? 'w-8 bg-gold' : 'w-1.5 bg-line hover:bg-dim'}`}
+                    aria-label={h.name} />
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>
       </div>
+
+      {modalHouse && <HouseModal house={modalHouse} onClose={() => setModalHouse(null)} />}
     </section>
   )
 }
