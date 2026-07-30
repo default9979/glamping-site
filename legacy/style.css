@@ -1,0 +1,503 @@
+:root {
+    --color-primary: #6b5840;
+    --color-accent: #8a9a5b;
+    --color-bg: #f5f1ea;
+    --color-text: #3a3228;
+    --color-text-light: #7a7060;
+    --font-heading: 'Georgia', serif;
+    --font-body: 'Arial', sans-serif;
+  }
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+  }
+  
+  nav {
+    background-color: rgba(40, 35, 25, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+  }
+  
+  .logo { color: #fff; font-size: 20px; font-weight: bold; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: #fff; text-decoration: none; }
+  
+  #hero {
+    background-image: linear-gradient(rgba(40,35,25,0.45), rgba(40,35,25,0.45)), url("images/hero-forest.png");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 56px;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  
+  .hero-content p {
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 32px;
+  }
+  
+  .hero-content button {
+    background-color: var(--color-accent);
+    color: #fff;
+    padding: 14px 36px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  #about {
+    background-color: var(--color-bg);
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  #about h2 {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    color: var(--color-primary);
+    margin-bottom: 24px;
+  }
+  
+  .about-text {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--color-text-light);
+  }
+  
+  html { scroll-behavior: smooth; }
+
+  #houses {
+    background-color: #fff;
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  #houses h2 {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    color: var(--color-primary);
+    margin-bottom: 48px;
+  }
+  
+  .slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .slides {
+    flex: 1;
+    min-height: 200px;
+  }
+  
+  .slide {
+    display: none;
+    background-color: var(--color-bg);
+    border-radius: 16px;
+    padding: 48px 32px;
+  }
+  
+  .slide.active {
+    display: block;
+  }
+  
+  .slide h3 {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+  }
+  
+  .slide p {
+    color: var(--color-text-light);
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+  
+  .slide-price {
+    color: var(--color-accent) !important;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 16px;
+  }
+  
+  .slider-btn {
+    background-color: var(--color-accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  #weather {
+    background-color: var(--color-bg);
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  #weather h2 {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+  }
+  
+  .weather-sub {
+    color: var(--color-text-light);
+    margin-bottom: 40px;
+  }
+  
+  .weather-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .weather-card {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    min-width: 140px;
+  }
+  
+  .weather-card .day {
+    font-weight: bold;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+  
+  .weather-card .icon {
+    font-size: 36px;
+    margin: 8px 0;
+  }
+  
+  .weather-card .temp {
+    font-size: 20px;
+    color: var(--color-text);
+  }
+  
+  .weather-card .temp-min {
+    color: var(--color-text-light);
+    font-size: 15px;
+  }
+
+  #calc {
+    background-color: #fff;
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  #calc h2 {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    color: var(--color-primary);
+    margin-bottom: 32px;
+  }
+  
+  .calc-box {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+  }
+  
+  .calc-box label {
+    color: var(--color-text);
+    font-weight: bold;
+    margin-top: 8px;
+  }
+  
+  .calc-box select,
+  .calc-box input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  #extrasBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #extrasBox label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal;
+    cursor: pointer;
+    margin-top: 0;
+  }
+
+  #extrasBox input {
+    width: auto;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  .calc-box button {
+    background-color: var(--color-accent);
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 12px;
+  }
+  
+  .calc-result {
+    margin-top: 24px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    background-color: var(--color-accent);
+    padding: 18px;
+    border-radius: 12px;
+    min-height: 30px;
+  }
+
+  #booking {
+    background-color: var(--color-bg);
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  #booking h2 {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+  }
+  
+  .booking-sub {
+    color: var(--color-text-light);
+    margin-bottom: 32px;
+  }
+  
+  .booking-form {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+  }
+  
+  .booking-form input,
+  .booking-form select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  .booking-form button {
+    background-color: var(--color-accent);
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  
+  .error {
+    color: #c0392b;
+    font-size: 14px;
+    min-height: 16px;
+  }
+  
+  .form-status {
+    margin-top: 12px;
+    font-weight: bold;
+    color: var(--color-primary);
+  }
+
+  footer {
+    background-color: #3a3228;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 60px 40px 40px;
+  }
+  
+  .footer-col {
+    flex: 1;
+    min-width: 180px;
+  }
+  
+  .footer-col h3 {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  
+  .footer-col h4 {
+    margin-bottom: 12px;
+    font-size: 17px;
+  }
+  
+  .footer-col p {
+    margin-bottom: 8px;
+    color: #e0d8cc;
+    line-height: 1.6;
+  }
+  
+  .footer-col a {
+    color: #e0d8cc;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 6px;
+  }
+  
+  .footer-col a:hover {
+    color: #fff;
+  }
+  
+  .footer-bottom {
+    background-color: #2c261e;
+    color: #c0b6a5;
+    text-align: center;
+    padding: 16px;
+    font-size: 14px;
+  }
+
+  .burger {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .burger {
+      display: block;
+    }
+  
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background-color: rgba(40, 35, 25, 0.95);
+      padding: 20px;
+      gap: 16px;
+    }
+
+    .slider {
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+  
+    .slides {
+      order: 1;
+      flex-basis: 100%;
+    }
+  
+    .slider-btn {
+      order: 2;
+    }
+
+    .hero-content h1 {
+      font-size: 36px;
+    }
+  
+    .hero-content p {
+      font-size: 17px;
+    }
+  
+    .nav-links.open {
+      display: flex;
+    }
+  
+    .weather-cards {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      justify-content: flex-start;
+      padding-bottom: 12px;
+    }
+  
+    .weather-card {
+      flex: 0 0 auto;
+    }
+    
+    nav {
+      position: fixed;
+    }
+  }
+
+  .hero-content button,
+  .calc-box button,
+  .booking-form button,
+  .slider-btn {
+    transition: background-color 0.2s, transform 0.1s;
+  }
+
+  .hero-content button:hover,
+  .calc-box button:hover,
+  .booking-form button:hover {
+    background-color: #79894b;
+  }
+
+  .hero-content button:active,
+  .calc-box button:active,
+  .booking-form button:active,
+  .slider-btn:active {
+    transform: scale(0.97);
+  }
+
+  .slider-btn:hover {
+    background-color: #79894b;
+  }

@@ -5,23 +5,57 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: dark;
   }
 
   body {
-    @apply font-body bg-cream text-forest-900 antialiased;
+    @apply bg-night font-body text-fog antialiased;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-gold-light;
+  }
+}
+
+@layer components {
+  .card-dark {
+    @apply rounded-2xl border border-line bg-elevated/80 backdrop-blur-sm transition-all duration-300;
+  }
+
+  .card-dark:hover {
+    @apply border-gold/20 shadow-[0_0_40px_rgba(212,165,116,0.06)];
+  }
+
+  .btn-primary {
+    @apply inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-gold px-8 text-sm font-semibold text-night transition hover:bg-gold-light active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex h-12 items-center justify-center rounded-xl border border-line bg-elevated/50 px-8 text-sm font-medium text-fog transition hover:border-gold/30 hover:text-gold-light active:scale-[0.98];
+  }
+
+  .label-tag {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-elevated/80 px-4 py-1.5 text-xs uppercase tracking-[0.18em] text-dim;
+  }
+
+  .input-dark {
+    @apply w-full rounded-xl border border-line bg-night/80 px-4 py-3 text-fog outline-none transition placeholder:text-dim focus:border-gold/40 focus:ring-2 focus:ring-gold/10;
   }
 }
 
 @layer utilities {
-  .glass {
-    @apply border border-white/10 bg-white/10 backdrop-blur-xl;
-  }
-
-  .glass-dark {
-    @apply border border-white/10 bg-forest-900/40 backdrop-blur-xl;
-  }
-
   .text-gradient-gold {
-    @apply bg-gradient-to-r from-gold-light via-gold to-gold-dark bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-gold-light via-gold to-copper bg-clip-text text-transparent;
+  }
+}
+
+.animate-grid {
+  animation: grid 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-grid,
+  .animate-ken-burns {
+    animation: none !important;
   }
 }

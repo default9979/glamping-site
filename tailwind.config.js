@@ -4,45 +4,35 @@ export default {
   theme: {
     extend: {
       colors: {
-        forest: {
-          950: '#0a120e',
-          900: '#0f1a14',
-          800: '#1a2e22',
-          700: '#243d2e',
-        },
-        cream: {
-          DEFAULT: '#f5f0e8',
-          muted: '#e8e0d4',
-        },
+        night: '#030303',
+        surface: '#0a0a0a',
+        elevated: '#111111',
+        line: '#1a1a1a',
+        dim: '#737373',
+        fog: '#a3a3a3',
         gold: {
-          DEFAULT: '#c9a96e',
-          light: '#dfc998',
-          dark: '#a8864a',
+          DEFAULT: '#d4a574',
+          light: '#e8c9a0',
+          dim: '#8b6914',
         },
-        sage: {
-          DEFAULT: '#8fa88a',
-          light: '#b4c9af',
-        },
-        frost: 'rgba(255,255,255,0.08)',
+        copper: '#b87333',
       },
       fontFamily: {
         display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         body: ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
       animation: {
-        'float-slow': 'float 8s ease-in-out infinite',
-        'snow-fall': 'snowFall 12s linear infinite',
+        grid: 'grid 30s linear infinite',
+        'ken-burns': 'kenBurns 28s ease-in-out infinite alternate',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-12px)' },
+        grid: {
+          '0%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(calc(var(--cell-size) * 2))' },
         },
-        snowFall: {
-          '0%': { transform: 'translateY(-10vh) translateX(0)', opacity: 0 },
-          '10%': { opacity: 1 },
-          '90%': { opacity: 0.6 },
-          '100%': { transform: 'translateY(110vh) translateX(20px)', opacity: 0 },
+        kenBurns: {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(1.08)' },
         },
       },
     },
