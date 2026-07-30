@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лесной глэмпинг</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Лесной глэмпинг</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">О месте</a>
+      <a href="#houses">Домики</a>
+      <a href="#weather">Погода</a>
+      <a href="#booking">Бронь</a>
+    </div>
+    <button class="burger" id="burgerBtn">☰</button>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-content">
+      <h1>Уединённый отдых в лесу</h1>
+      <p>Тишина, природа и комфорт под одной крышей</p>
+      <a href="#booking"><button>Забронировать</button></a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>О месте</h2>
+    <p class="about-text">Лесной глэмпинг — это место, где можно выдохнуть. Уютные A-frame домики среди сосен, панорамные окна с видом на лес, тёплый свет вечером и полная тишина вокруг. Природа рядом, а комфорт — как дома.</p>
+  </section>
+
+  <section id="houses">
+    <h2>Наши домики</h2>
+  
+    <div class="slider">
+      <button class="slider-btn" id="prevBtn">‹</button>
+  
+      <div class="slides" id="slidesContainer"></div>
+      
+      <button class="slider-btn" id="nextBtn">›</button>
+    </div>
+  </section>
+
+  <section id="weather">
+    <h2>Погода в глэмпинге</h2>
+    <p class="weather-sub">Прогноз на ближайшие дни — спланируйте поездку</p>
+    <div class="weather-cards" id="weatherCards">
+      <p>Загружаем погоду...</p>
+    </div>
+  </section>
+
+  <section id="calc">
+    <h2>Рассчитать стоимость</h2>
+  
+    <div class="calc-box">
+      <label>Выберите домик:</label>
+      <select id="houseSelect"></select>
+  
+      <label>Количество ночей:</label>
+      <input type="number" id="nightsInput" value="1" min="1">
+  
+      <label>Дополнительные услуги:</label>
+      <div id="extrasBox"></div>
+  
+      <div class="calc-result" id="calcResult"></div>
+    </div>
+  </section>
+
+  <section id="booking">
+    <h2>Забронировать</h2>
+    <p class="booking-sub">Оставьте заявку — свяжемся и подтвердим бронь</p>
+  
+    <form id="bookingForm" class="booking-form">
+      <input type="text" id="name" placeholder="Ваше имя" autocomplete="name">
+      <span class="error" id="nameError"></span>
+  
+      <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel">
+      <span class="error" id="phoneError"></span>
+  
+      <select id="houseBooking"></select>
+  
+      <label>Дата заезда:</label>
+      <input type="date" id="dateFrom">
+  
+      <label>Дата выезда:</label>
+      <input type="date" id="dateTo">
+      <span class="error" id="dateError"></span>
+  
+      <button type="submit">Отправить заявку</button>
+      <div class="form-status" id="formStatus"></div>
+    </form>
+  </section>
+  
+  <footer>
+    <div class="footer-col">
+      <h3>Лесной глэмпинг</h3>
+      <p>Уединённый отдых на природе с комфортом.</p>
+    </div>
+  
+    <div class="footer-col">
+      <h4>Контакты</h4>
+      <p><a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+      <p><a href="https://t.me/yourglamping" target="_blank">Telegram</a></p>
+    </div>
+  
+    <div class="footer-col">
+      <h4>Расположение</h4>
+      <p>Республика Карелия,<br>экопарк «Лесной»</p>
+    </div>
+  
+    <div class="footer-col">
+      <h4>Меню</h4>
+      <a href="#about">О месте</a>
+      <a href="#houses">Домики</a>
+      <a href="#weather">Погода</a>
+      <a href="#booking">Бронь</a>
+    </div>
+  </footer>
+  
+  <div class="footer-bottom">
+    <p>© 2026 Лесной глэмпинг. Все права защищены.</p>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
